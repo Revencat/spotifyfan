@@ -33,7 +33,7 @@ export function usePwaInstall() {
     };
   }, []);
 
-  const install = async (): Promise<'accepted' | 'dismissed' | 'unavailable'> => {
+  const promptInstall = async (): Promise<'accepted' | 'dismissed' | 'unavailable'> => {
     if (!bip) return 'unavailable';
     setInstalling(true);
     try {
@@ -49,7 +49,15 @@ export function usePwaInstall() {
     }
   };
 
-  return { state, install, installing, canPrompt: !!bip };
+  return {
+    state: state.kind,
+    detail: state,
+    install: promptInstall,
+    promptInstall,
+    installing,
+    canPrompt: !!bip,
+    canAutoInstall: !!bip && state.kind !== 'installed',
+  };
 }
 
 function detect(): InstallState {

@@ -157,11 +157,12 @@ export function EmptyState({ icon, title, sub, action }: { icon: React.ReactNode
   );
 }
 
-export function Btn({ children, onClick, primary, small, className = '', disabled, title }: {
-  children: React.ReactNode; onClick?: () => void; primary?: boolean; small?: boolean; className?: string; disabled?: boolean; title?: string;
+export function Btn({ children, onClick, primary, small, className = '', disabled, title, type }: {
+  children: React.ReactNode; onClick?: () => void; primary?: boolean; small?: boolean; className?: string; disabled?: boolean; title?: string; type?: 'button' | 'submit';
 }) {
   return (
     <button
+      type={type ?? 'button'}
       onClick={onClick} disabled={disabled} title={title}
       className={`inline-flex items-center gap-2 rounded-full font-semibold transition-all active:scale-95 disabled:opacity-40 disabled:pointer-events-none
         ${primary ? 'bg-lime text-black hover:bg-lime-deep shadow-card' : 'surface-raised border text-ink hover:border-lime/50'}

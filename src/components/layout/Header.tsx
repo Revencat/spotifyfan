@@ -14,7 +14,7 @@ export function Header() {
   const setPalette = useUi((s) => s.setPalette);
   const username = usePrefs((s) => s.username);
   const { navigate } = useRouter();
-  const { state, install, canPrompt } = usePwaInstall();
+  const { detail, install, canPrompt } = usePwaInstall();
 
   return (
     <header className="sticky top-0 z-30 flex items-center gap-3 px-4 md:px-6 h-14 surface-panel/80 backdrop-blur-md border-b border-edge/50">
@@ -33,7 +33,7 @@ export function Header() {
       </button>
       <div className="flex items-center gap-2 ml-auto">
         <EarlyBadge className="hidden lg:inline-flex" />
-        {state.kind !== 'installed' && canPrompt && (
+        {detail.kind !== 'installed' && canPrompt && (
           <button
             onClick={() => install()}
             className="flex items-center gap-1.5 text-xs font-semibold rounded-full surface-raised border px-3 py-1.5 hover:border-lime/50 hover:text-lime transition-colors"
@@ -42,7 +42,7 @@ export function Header() {
             <Download size={13} /><span className="hidden sm:inline">{t('install')}</span>
           </button>
         )}
-        {state.kind === 'installed' && (
+        {detail.kind === 'installed' && (
           <span className="text-xs text-lime font-semibold hidden sm:inline" title={t('installed')}>✓ PWA</span>
         )}
         <button onClick={() => navigate('/settings')} aria-label="Profile"

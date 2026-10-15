@@ -12,8 +12,11 @@ export default {
         ink: '#F5F5F7',
         mute: '#A0A7B4',
         lime: { DEFAULT: '#B7F36B', deep: '#99D84C' },
+        altlime: '#99D84C',
         electric: '#5B8CFF',
+        accentblue: '#5B8CFF',
         violet: '#A78BFA',
+        accentviolet: '#A78BFA',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
